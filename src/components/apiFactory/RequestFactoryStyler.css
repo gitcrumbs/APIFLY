@@ -1,0 +1,12 @@
+
+#response_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    position: relative;
+    width: 50rem;
+    height: 400px;
+    overflow-y: auto;
+}
+

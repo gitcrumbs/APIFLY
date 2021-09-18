@@ -1,0 +1,45 @@
+
+   .sidenav {
+    height: 171%;
+    width: 240px;
+    position: absolute;
+    z-index: 0;     
+    background-color: #f0e0c0;
+    margin: auto;    
+    overflow-x: hidden;   
+    display: block;     
+    
+   
+    }
+    .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    }
+    
+    .main {   
+    padding: 0px 10px;
+    }
+    .container:before,
+    .container:after {
+        content: "";
+        display: table;
+    }
+ 
+    .container:after {
+        clear: both;
+    }
+    @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    }
+ 
+ #folder_explorer{
+     content: url(../images/folder.png);
+     width: 33px;
+     height: 30px;
+     margin-left: 8px;
+ }
+ 

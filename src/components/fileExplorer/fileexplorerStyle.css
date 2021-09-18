@@ -1,0 +1,70 @@
+#hierarchy
+{
+    position: absolute;
+    font-family: FontAwesome;
+    width: 300px;
+}
+.foldercontainer, .file, .noitems
+{
+    display: block;
+    padding: 5px 5px 5px 50px;
+}
+.folder,.file
+{    
+    cursor: pointer;
+}
+
+.folder{
+    margin-left: 2px;
+}
+
+.noitems
+{
+    display: none;
+    pointer-events: none;
+}
+.file:hover
+{
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.8);
+}
+
+
+.file:active
+{
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
+
+}
+ .file:before
+{
+    padding-right: 10px;
+}
+
+.folder:hover{
+    color: #364051;
+    font-weight: bolder;
+    
+}
+
+.fa-folder-o > img {   
+    cursor: default; 
+    content: url(../images/open.png); 
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+}
+
+
+.fa-folder> img{
+    content: url(../images/closed.png);
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+}
+
+
+#file_holder{
+    content: url(../images/file.png);
+    width: 25px;
+    height: 25px; 
+    margin-left: -20px;
+}
