@@ -1,0 +1,5 @@
+{
+    "endpointUrl":"https://jsonplaceholder.typicode.com/posts",
+    "env":"STG",
+    "Instance":"US:WEST"
+}

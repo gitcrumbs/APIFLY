@@ -1,0 +1,78 @@
+[
+	{
+		
+		"createPost": {
+			"Scenario": "Invoke Create Post",
+			"AuthorizationHeaders": {
+				"contentType": "application/x-www-form-urlEncoded",
+				"AuthEndPoint": "",
+				"tokenBody": {
+					"file": "",
+					"tokenString": ""
+				}
+			},
+			"retry": {
+				"max": 0,
+				"delay": "1000"
+			},
+			"endpoint": {
+				"Test": "",
+				"Staging": "",
+				"Production": "",
+				"urlParams": {
+					"param1": "?view=complete"
+				}
+			},
+			"Method": "POST",
+			"expectedStatusCode": 201,
+			"requestBody": {
+				"type": "application/txt",
+				"file": ""
+			},
+			"retainValues": {
+				"$.id": ""
+			},
+			"assertions": {
+				"$.id": "NULL"
+			}
+		}
+	},
+	{
+		
+		"getPost": {
+			"Scenario": "Invoke Create Post",
+			"AuthorizationHeaders": {
+				"contentType": "application/x-www-form-urlEncoded",
+				"AuthEndPoint": "",
+				"tokenBody": {
+					"file": "",
+					"tokenString": ""
+				}
+			},
+			"retry": {
+				"max": 0,
+				"delay": "1000"
+			},
+			"endpoint": {
+				"Test": "",
+				"Staging": "",
+				"Production": "",
+				"urlParams": {
+					"param1": "?view=complete"
+				}
+			},
+			"Method": "POST",
+			"expectedStatusCode": 201,
+			"requestBody": {
+				"type": "application/txt",
+				"file": ""
+			},
+			"retainValues": {
+				"$.id": ""
+			},
+			"assertions": {
+				"$.id": "NULL"
+			}
+		}
+	}
+]

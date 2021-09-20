@@ -1,0 +1,133 @@
+.drag-box-large{
+    padding: 30px;
+    background-color: cyan;
+    max-width: 14rem;
+    height: 38rem;
+    cursor: move;
+    border-radius: 25px;
+  }
+
+
+  .drag-box-small{
+    padding: 30px;      
+    max-width: 5rem;
+    background-color: cyan;
+    height: 8rem;
+    cursor: move;
+    border-radius: 50%;
+   
+  }
+  #drag-box{
+    content: url('../images/center_State.svg');
+    max-width: 3rem;
+    height: 3rem;
+  }
+
+  #toggler{
+   position: fixed;
+    content: url('../images/left_collapse.svg');
+  }
+
+
+
+  #innercontainer {
+    width: auto;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .circle {
+    border-radius: 50%;
+    background-color: deepskyblue;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(.5, .5);
+      opacity: .5;
+    }
+    to {
+      transform: scale(2.5, 2.5);
+      opacity: 0;
+    }
+  }
+  .item {
+    z-index: 100;
+    padding: 5px;
+    
+    
+  }
+ 
+
+
+  .item_initial {
+    content: url('../images/center_State.svg');
+    width: 60px;
+  }
+
+  .item_changed{
+    content: url('../images/Expanded.svg');
+    width: 60px;
+  }
+
+
+  ul {
+    position: relative;
+    top: 200px; left: 200px; /*for example purposes only*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    position: absolute;    
+    font-size: 20px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left:8%;
+    -webkit-transition: all 0.35s linear;
+    -moz-transition: all 0.35s linear;
+    transition: all 0.35s linear;
+   
+
+}
+
+#toggle_display:before{
+  content: '';
+  position:absolute;  
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 1%;
+  background-color: cornflowerblue;
+  
+}
+
+.display_enabled{
+ display: none;
+  
+}
+
+li:not(:first-child):hover{
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.8);
+  border: 0.5px solid #f7f7f7;
+  
+}
+
+.iconHolder{
+  content: url('../images/center_State.svg');
+}
+
+.iconHolder_expanded{
+  content: url('../images/Expanded.svg');
+}

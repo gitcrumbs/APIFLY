@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="66" height="66" enable-background="new 0 0 66 66" xml:space="preserve"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/>
+
+<g class="currentLayer" style=""><title>Layer 1</title><g id="svg_1" class="" transform="rotate(-179.99996948242188 33,33) ">
+	<circle fill="#053A51" cx="33" cy="33" r="30.250999450683594" id="svg_2"/>
+	<path fill="#001319" d="M63.251,33c0,16.707-13.545,30.25-30.252,30.25c-16.705,0-30.25-13.543-30.25-30.25" id="svg_3"/>
+	<g id="svg_4">
+		<g id="svg_5">
+			<polygon fill="#FFC239" points="26.031,33.004 35,24.031 35,12.527 14.527,33.004 35,53.473 35,41.971    " id="svg_6"/>
+		</g>
+		<g id="svg_7">
+			<polyline fill="#EFA91B" points="14.527,33.004 35,53.473 35,41.971 26.031,33.004 35,24.031    " id="svg_8"/>
+		</g>
+		
+			<rect x="36.433998107910156" y="26.66900062561035" transform="matrix(-0.7071,0.7071,-0.7071,-0.7071,96.3383,26.0954) " fill="#FFC239" width="12.661999702453613" height="12.661999702453613" id="svg_9"/>
+		<polyline fill="#EFA91B" points="33.812,33 42.765,41.953 51.718,33   " id="svg_10"/>
+	</g>
+</g></g></svg>

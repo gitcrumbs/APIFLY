@@ -36,26 +36,4 @@ body{
 }
 
 
-
-.navbar{   
-   color: #f7f7f7;   
-   background-color: #364051;
-   padding: 0px
-   
-}
-
-.navbar-brand{
-    margin-left: 6rem;
-}
-
-#offcanvasRightLabel{
-    color: black;
-}
-    
-#env_container{
-   display: flex;
-   float: right;
-}
   
-
-

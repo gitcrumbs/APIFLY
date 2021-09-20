@@ -2,20 +2,30 @@
 {
     position: absolute;
     font-family: FontAwesome;
-    width: 300px;
+    width:180px;
 }
+
+.foldercontainer{    
+    width: 17rem; 
+    border: 1px solid black;   
+}
+
+.foldercontainer>span>img{   
+    word-wrap: break-word;
+    border: 1px solid black;
+    
+}
+
+
 .foldercontainer, .file, .noitems
 {
     display: block;
-    padding: 5px 5px 5px 50px;
+    padding: 5px 5px 5px 30px;
 }
+
 .folder,.file
 {    
     cursor: pointer;
-}
-
-.folder{
-    margin-left: 2px;
 }
 
 .noitems
@@ -27,7 +37,6 @@
 {
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.8);
 }
-
 
 .file:active
 {
@@ -68,3 +77,4 @@
     height: 25px; 
     margin-left: -20px;
 }
+

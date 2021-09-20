@@ -47,6 +47,7 @@
     width: 100%;
     font: inherit;
     padding: 0.15rem 0.25rem;
+    margin-bottom: 3px;
     border: 1px solid #ccc;
   }
   
@@ -63,7 +64,9 @@
     padding: 1.5rem;
   }
   
-  
+  #new_post{
+    margin-bottom: 3px;
+  }
   .posts {
     list-style: none;
     margin: 0;
@@ -119,6 +122,7 @@
         width: 100%;
         height: 400px;
         overflow-y: auto;
+        
     }
     
   
@@ -166,13 +170,39 @@
       
     }
 
-    #responseCode{
-      margin-top: 18px;
-      margin-bottom: 20px;
+    #responseCode{      
       float: right;
-      margin-right: 4px;
+      position: absolute;
+      margin-left: 40rem;
+      display: flex;
+      word-spacing: 3px;
+      margin-top: 3%
+      
     }
     
+    #requestCode{      
+      float: right;
+      margin-right: 1px;
+      display: flex;
+      word-spacing: 3px;      
+      margin-top: 7%
+    }
+    
+    #newPost_label{
+      margin-top: 7%
+    }
+
+    #expected_code{
+      width: 10%;
+      height: 2%;
+     float: right;
+    }
+
+
+    #dot_color{
+      margin-right: 6px;      
+    }
+
     .dot-green {
       height:20px;
       width: 20px;
@@ -209,12 +239,9 @@
     }
 
 
-    #dots{
-      margin: 3px;
-      
-    }
+    
 
-    .dot-red:hover,.dot-green:hover,.dot-yellow:hover {
-      background: white;
-    }
    
+   
+
+    

@@ -2,7 +2,7 @@
 const fs = require('fs');
 const crypto = require('crypto');
 const { WSATYPE_NOT_FOUND } = require('constants');
-class APIMethods {
+export class APIMethods {
 
     constructor(filename) {
 
@@ -91,12 +91,3 @@ class APIMethods {
 }
 
 
-const test = async () => {
-    const repo = new APIMethods('users.json');
-      const user = await repo.getOneBy({password:'mPassword'});
-    
-      console.log(user);    
-
-};
-
-test();

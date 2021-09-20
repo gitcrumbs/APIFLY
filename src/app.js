@@ -7,10 +7,9 @@ import TokenHandler from './components/executionHandler/TokenHandler';
 import LeftNavigation from './components/fileExplorer/LeftNavigation'
 import ResponseBodyHandler from './components/executionHandler/ResponseBodyHandler'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './appstyler.css'
-
-
+import './appstyler.css';
 import RequestFactory from './components/apiFactory/RequestFactory';
+import DraggableLeftNav from '../src/components/playground/DraggableLeftNav'
 
 
 class BumbleBee extends React.Component {
@@ -18,17 +17,11 @@ class BumbleBee extends React.Component {
 
         render() {
                 return (
+
                         <div id="root-container">
-                                <Header />
-                                <LeftNavigation />
-                                <div id="execution_handler">
 
-
-                                       
-                                </div>
-
-
-
+                      
+                                <DraggableLeftNav/>
                         </div>
 
                 )

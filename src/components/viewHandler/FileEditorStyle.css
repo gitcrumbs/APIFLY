@@ -3,7 +3,7 @@
 */
 
 .fileEditor{
-  margin-left: 16rem;
+  margin-left: 1rem;
 }
 
 .tabset > input[type="radio"] {
@@ -87,7 +87,7 @@
 
 #execution_summary{   
   float: right;
-  width: 18%;  
+  width: 15%;    
   margin-right: 3%;
   margin-top: 25vh; 
   padding: 0rem;

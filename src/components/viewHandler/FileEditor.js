@@ -2,7 +2,33 @@ import React from 'react';
 import './FileEditorStyle.css';
 import './FileTabs';
 import APIHandler from '../executionHandler/APIHandler';
+
+
 const FileEditor = () => {
+
+  var closebtns = document.getElementsByClassName("close");
+ 
+
+
+  function importAll(r){
+    
+    let files = {};
+    r.keys().map((item,index)=>{files[item.replace('./','')]=r(item);});
+    return files;
+}
+
+   const files = importAll(require.context('../DataFiles/Packages',false,/\.(json)$/));
+   
+
+    const listFileObject= ()=>{        
+        console.log(files);   
+    };
+    
+
+
+
+
+
 
 
   return (
@@ -25,13 +51,13 @@ const FileEditor = () => {
       <div className="tabset">
 
         <input type="radio" name="tabset" id="tab1" aria-controls="marzen" defaultChecked />
-        <label htmlFor="tab1">Märzen</label>
+        <label htmlFor="tab1">Märzen  <span className="close" onClick={listFileObject}>×</span></label>
 
         <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" />
-        <label htmlFor="tab2">Rauchbier</label>
+        <label htmlFor="tab2">Rauchbier <span className="close">×</span></label>
 
         <input type="radio" name="tabset" id="tab3" aria-controls="dunkles" />
-        <label htmlFor="tab3">Dunkles Bock</label>
+        <label htmlFor="tab3">Dunkles Bock <span className="close">×</span></label>
 
         <div className="tab-panels">
           <section id="marzen" className="tab-panel">
