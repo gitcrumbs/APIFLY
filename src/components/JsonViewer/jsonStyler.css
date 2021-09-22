@@ -1,0 +1,11 @@
+#json_viewer{
+    position:absolute;
+    box-sizing: border-box;
+    max-width: 60%;
+    margin-left: 62%;
+    max-height: 70%;
+    margin-top: 6rem;
+    overflow-y: scroll;
+    border: 1px solid black;
+    display: none;
+}

@@ -10,8 +10,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './appstyler.css';
 import RequestFactory from './components/apiFactory/RequestFactory';
 import DraggableLeftNav from '../src/components/playground/DraggableLeftNav'
-
-
+import EditHelperWidget from './components/HelperWidgets/EditHelperWidget';
+import JsonVIewEditor from './components/JsonViewer/JsonVIewEditor';
+import FileEditor from './components/viewHandler/FileEditor';
+import TaskPanelWidget from './components/PanelWidget/TaskPanelWidget'
+import BreadCrumbsNavigator from './components/BreadCrumbs/BreadCrumbsNavigator';
 class BumbleBee extends React.Component {
 
 
@@ -20,8 +23,19 @@ class BumbleBee extends React.Component {
 
                         <div id="root-container">
 
-                      
-                                <DraggableLeftNav/>
+                        
+                                <Header />   
+                                
+                                <APIHandler />
+                                <TaskPanelWidget/>
+                               <JsonVIewEditor/>
+                              
+                               
+                              
+
+
+
+
                         </div>
 
                 )

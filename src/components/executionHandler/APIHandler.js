@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { result } from 'underscore';
 import './ApiHandlerStyler.css'
+import JsonVIewEditor from '../JsonViewer/JsonVIewEditor';
 
 const APIHandler = () => {
 
@@ -9,6 +10,8 @@ const APIHandler = () => {
     const [StatusCode, setStatusCode] = React.useState([]);
     const [StatusText, setStatusText] = React.useState([false]);
     const [statusIndicator, setstatusIndicator] = React.useState([]);
+    const [RequestBody, setRequestBody] = React.useState({});
+
 
     const SuccessStatus = {
         200: 'OK',
@@ -19,54 +22,55 @@ const APIHandler = () => {
         205: 'Reset Content',
         206: 'Partial Content',
         207: 'Multi-Status (WebDAV)',
-        208: 'Already Reported (WebDAV)'};
-        const redirectionError = {
-            300: 'Multiple Choices',
-            301: 'Moved Permanently',
-            302: 'Found',
-            303: 'See Other',
-            304: 'Not Modified',
-            305: 'Use Proxy',
-            306: '(Unused)',
-            307: 'Temporary Redirect',
-            308: 'Permanent Redirect (experimental)'
-        };
-        const clientError = {
-            400: 'Bad Request',
-            401: 'Unauthorized',
-            402: 'Payment Required',
-            403: 'Forbidden',
-            404: 'Not Found',
-            405: 'Method Not Allowed',
-            406: 'Not Acceptable',
-            407: 'Proxy Authentication Required',
-            408: 'Request Timeout',
-            409: 'Conflict',
-            410: 'Gone',
-            411: 'Length Required',
-            412: 'Precondition Failed',
-            413: 'Request Entity Too Large',
-            414: 'Request-URI Too Long',
-            415: 'Unsupported Media Type',
-            416: 'Requested Range Not Satisfiable',
-            417: 'Expectation Failed',
-            418: 'I\'m a teapot (RFC 2324)',
-            420: 'Enhance Your Calm (Twitter)',
-            422: 'Unprocessable Entity (WebDAV)',
-            423: 'Locked (WebDAV)',
-            424: 'Failed Dependency (WebDAV)',
-            425: 'Reserved for WebDAV',
-            426: 'Upgrade Required',
-            428: 'Precondition Required',
-            429: 'Too Many Requests',
-            431: 'Request Header Fields Too Large',
-            444: 'No Response (Nginx)',
-            449: 'Retry With (Microsoft)',
-            450: 'Blocked by Windows Parental Controls (Microsoft)',
-            451: 'Unavailable For Legal Reasons',
-            499: 'Client Closed Request (Nginx)'
-        };
-        const serverError = {
+        208: 'Already Reported (WebDAV)'
+    };
+    const redirectionError = {
+        300: 'Multiple Choices',
+        301: 'Moved Permanently',
+        302: 'Found',
+        303: 'See Other',
+        304: 'Not Modified',
+        305: 'Use Proxy',
+        306: '(Unused)',
+        307: 'Temporary Redirect',
+        308: 'Permanent Redirect (experimental)'
+    };
+    const clientError = {
+        400: 'Bad Request',
+        401: 'Unauthorized',
+        402: 'Payment Required',
+        403: 'Forbidden',
+        404: 'Not Found',
+        405: 'Method Not Allowed',
+        406: 'Not Acceptable',
+        407: 'Proxy Authentication Required',
+        408: 'Request Timeout',
+        409: 'Conflict',
+        410: 'Gone',
+        411: 'Length Required',
+        412: 'Precondition Failed',
+        413: 'Request Entity Too Large',
+        414: 'Request-URI Too Long',
+        415: 'Unsupported Media Type',
+        416: 'Requested Range Not Satisfiable',
+        417: 'Expectation Failed',
+        418: 'I\'m a teapot (RFC 2324)',
+        420: 'Enhance Your Calm (Twitter)',
+        422: 'Unprocessable Entity (WebDAV)',
+        423: 'Locked (WebDAV)',
+        424: 'Failed Dependency (WebDAV)',
+        425: 'Reserved for WebDAV',
+        426: 'Upgrade Required',
+        428: 'Precondition Required',
+        429: 'Too Many Requests',
+        431: 'Request Header Fields Too Large',
+        444: 'No Response (Nginx)',
+        449: 'Retry With (Microsoft)',
+        450: 'Blocked by Windows Parental Controls (Microsoft)',
+        451: 'Unavailable For Legal Reasons',
+        499: 'Client Closed Request (Nginx)'
+    };
+    const serverError = {
         500: 'Internal Server Error',
         501: 'Not Implemented',
         502: 'Bad Gateway',
@@ -81,12 +85,12 @@ const APIHandler = () => {
         511: 'Network Authentication Required',
         598: 'Network read timeout error',
         599: 'Network connect timeout error',
-        };
+    };
 
 
-        const responseDict = {...SuccessStatus,...redirectionError,...clientError,...serverError};        
+    const responseDict = { ...SuccessStatus, ...redirectionError, ...clientError, ...serverError };
 
-        const RequestObject = {
+    const RequestObject = {
         requestUrl: '',
         methodRequested: '',
         requestBody: ''
@@ -150,20 +154,20 @@ const APIHandler = () => {
     }
 
     const validatexecutor = (e) => {
-        e.preventDefault();      
+        e.preventDefault();
         setResponse([]);
         RequestObject.requestUrl = document.getElementById("requestUrl").value
         RequestObject.methodRequested = document.getElementById("Method_Selector").value
-        
+
 
         switch (RequestObject.methodRequested) {
             case 'GET':
 
-                getRequest();               
+                getRequest();
                 break;
 
             case 'POST':
-                postRequest();               
+                postRequest();
                 break;
             default:
                 break;
@@ -171,7 +175,7 @@ const APIHandler = () => {
 
 
 
-       
+
 
     };
 
@@ -187,27 +191,33 @@ const APIHandler = () => {
     }
 
 
-    const getstatusIndicator = (payload) =>{
+    const getstatusIndicator = (payload) => {
 
-        
-        console.log("Inside Status Indicator check",typeof(payload)) ;
-        if (payload in SuccessStatus) {            
-            return "dot-green";           
-        } else if (payload in redirectionError){
-           
-           return "dot-yellow";
-           
-        }else if(payload in clientError){
-           return "dot-red";
-          
-        }else if (payload in serverError){
-           return"dot-red";
-           
-        }else{           
+
+        console.log("Inside Status Indicator check", typeof (payload));
+        if (payload in SuccessStatus) {
+            return "dot-green";
+        } else if (payload in redirectionError) {
+
+            return "dot-yellow";
+
+        } else if (payload in clientError) {
+            return "dot-red";
+
+        } else if (payload in serverError) {
+            return "dot-red";
+
+        } else {
             return "NA";
-        }       
-            
-       
+        }
+
+
+    }
+
+
+    const validateRequestPayload = (e) => {
+        setRequestBody([e.target.value]);
+
     }
 
 
@@ -229,9 +239,9 @@ const APIHandler = () => {
                         </select>
                         <input id="requestUrl" placeholder="Enter Request URL" type="text" />
                         <button id="Send_Request">Test</button>
-                        <small id="requestCode">Expected Status Code: <input id="expected_code" defaultValue="200"></input></small>
-                        <label id="newPost_label"><b>Request Payload :</b></label>
-                        <textarea rows="6" id="content"></textarea>
+                        <div id="newPost_label"><b>Request Payload :</b><div id="requestCode"><span>Expected Status Code: </span><input id="expected_code" defaultValue="200"></input></div></div>
+                        <textarea rows="4" onChange={validateRequestPayload}  id="content" ></textarea>
+                        
                     </div>
 
                 </form>
@@ -239,22 +249,25 @@ const APIHandler = () => {
             </section>
 
             <section id="new-post">
-            
-            
-            <div id="responseCode" >
-            <span id="dot_color" className={statusIndicator}></span>                  
-                      <b>{StatusCode}  {responseDict[StatusCode]}   </b>
-                </div>
-                <label id="newPost_label"><b>Response :</b> </label>   
+                <div id="newPost_label"><b>Response :</b>
+                    <div id="responseCode" >
 
-                
-                
-              
-                
+                        <span id="dot_color" className={statusIndicator}></span>
+                        <p>{StatusCode}&nbsp;{responseDict[StatusCode]}</p>
+
+                    </div>
+
+                </div>
+
+
+
+
                 <div id="responseBody_Container" onScroll={scrollIndicator}>
+
                     {Response.map((resp, index) => {
                         return <pre key={index}>{JSON.stringify(resp, null, 2)}</pre>
                     })}
+
                 </div>
 
                 <div className="progress-container">
@@ -264,6 +277,9 @@ const APIHandler = () => {
                 </div>
 
             </section>
+
+
+          
 
 
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import EditHelperWidget from '../HelperWidgets/EditHelperWidget';
 
 const ModalItem = () => {
 
@@ -27,6 +28,13 @@ const ModalItem = () => {
                     contentLabel="Minimal Modal Example"
                 >
                     <button onClick={handleCloseModal}>Close Modal</button>
+
+
+
+                 <EditHelperWidget/>
+
+
+
                 </ReactModal>
             </div>
 

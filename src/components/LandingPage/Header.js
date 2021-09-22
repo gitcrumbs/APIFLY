@@ -1,6 +1,7 @@
 import React from 'react';
 import EnvironmentInfoHandler from '../EnvironmentCanvas/EnvironmentInfoHandler';
-import '../LandingPage/HeaderStyles.css'
+import '../LandingPage/HeaderStyles.css';
+
 
 const Header = () => {
 
@@ -13,12 +14,11 @@ const Header = () => {
       <div className="container-flex">
         
          <div className="container">
-            <div id="navbar">
-               <div className="navbar-brand" >BumbleBee</div>
-            </div>
-
+            <div id="navbar">                  
+                     <div className="navbar-brand" ><img id="header_logo_left"></img> Pebble <img id="header_logo_right" ></img></div>
+                 </div>
          </div>
-
+         
       </div>
       <div className="container-flex">
          <div >Logout</div>

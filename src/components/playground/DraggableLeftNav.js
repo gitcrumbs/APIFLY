@@ -3,10 +3,10 @@ import React from 'react';
 import './editorStyler.css';
 import Draggable from 'react-draggable';
 import $ from 'jquery';
-import './editorStyler.css';
 import ReactModal from 'react-modal';
-
-
+import  BreadCrumbsNavigator from '../BreadCrumbs/BreadCrumbsNavigator'
+import EditHelperWidget from '../HelperWidgets/EditHelperWidget';
+import GlobVarEval from '../GlobVarEvaluator/GlobVarEval'
 const buttonToggleCheck = () => {
   
 
@@ -99,6 +99,8 @@ const expandItems = () => {
 
 export const DraggableLeftNav = () => {
   const [showModal, setshowModal] = React.useState(false);
+
+
   const handleEvent = ((e, data) => {
     console.log('Event Type', e.type);
     console.log(e, data);
@@ -142,20 +144,21 @@ export const DraggableLeftNav = () => {
           <li id="toggle_display" onClick={handleOpenModal} className="display_enabled">Well This is at Say!Test!ell This is at Say!Test!ell This is at Say!Test!</li>
           <li id="toggle_display" onClick={handleOpenModal} className="display_enabled">Well This is at Say!Test!ell This is at Say!Test!ell This is at Say!Test!</li>
           <li id="toggle_display" onClick={handleOpenModal} className="display_enabled">Well This is at Say!Test!ell This is at Say!Test!ell This is at Say!Test!</li>
-        </ul>
-        
-        
+        </ul>       
 
       </Draggable>
 
       <div>
-      <button onClick={handleOpenModal}>Trigger Modal</button>
-      <ReactModal 
+      <button id="openModal"onClick={handleOpenModal}>Trigger Modal</button>
+      <ReactModal id="ConfigCreator"
            ariaHideApp={false}
           isOpen={showModal}
           contentLabel="Minimal Modal Example"
       >
-          <button onClick={handleCloseModal}>Close Modal</button>
+          <button id="openModal" onClick={handleCloseModal}>Close Modal</button>
+          <BreadCrumbsNavigator/>
+          <EditHelperWidget/>
+          <GlobVarEval/>
       </ReactModal>
   </div>
     </div>

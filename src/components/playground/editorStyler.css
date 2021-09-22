@@ -131,3 +131,12 @@ li:not(:first-child):hover{
 .iconHolder_expanded{
   content: url('../images/Expanded.svg');
 }
+
+#openModal{
+  margin-left: 3px;
+  margin-top: 3px;
+  display: flex
+}
+#ConfigCreator{
+  margin-top: 3rem;
+}
