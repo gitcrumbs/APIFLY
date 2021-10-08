@@ -1,105 +1,95 @@
-/*
- CSS for the main interaction
-*/
 
-.fileEditor{
-  margin-left: 1rem;
-}
-
-.tabset > input[type="radio"] {
-  position: absolute;
-  left: -200vw;
-}
-
-.tabset .tab-panel {
-  display: none;
-}
-
-.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
-.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
-.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
-.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
-.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
-.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
-  display: block;
-}
-
-/*
- Styling
-*/
-
-.tabset > label {
-  position: relative;
-  display: inline-block;
-  padding: 15px 15px 25px;
-  border: 1px solid transparent;
-  border-bottom: 0;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.tabset > label::after {
-  content: "";
-  position: absolute;
-  left: 15px;
-  bottom: 10px;
-  width: 22px;
-  height: 4px;
-  background: #8d8d8d;
-}
-
-.tabset > label:hover,
-.tabset > input:focus + label {
-  color: #06c;
-}
-
-.tabset > label:hover::after,
-.tabset > input:focus + label::after,
-.tabset > input:checked + label::after {
-  background: #06c;
-}
-
-.tabset > input:checked + label {
-  border-color: #ccc;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
-}
-
-.tab-panel {
-  
-  border-top: 1px solid #ccc;
-}
-
-/*
- Demo purposes only
-*/
-*,
-*:before,
-*:after {
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
 
-.tabset {
-  max-width: 80%;
+body {
+  font: 14px/1 'Open Sans', sans-serif;
+  color: #555;
+  background: #eee;
+}
+
+#tsum-tabs h1 {
+  padding: 50px 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+#tsum-tabs p {
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+#tsum-tabs main {
+  min-width: 320px;
+  max-width: 800px;  
+  margin: 0 auto;
+  background: #fff;
+}
+
+#tsum-tabs div {
+  display: none;
+  max-width: 87%;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+  height: auto;
+  
+}
+
+#tsum-tabs input {
+  display: none;
+}
+
+#tsum-tabs label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  font-weight: 600;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;  
+  margin-top: 13px;
+}
+
+#tsum-tabs label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
 }
 
 
-#execution_summary{   
-  float: right;
-  width: 15%;    
-  margin-right: 3%;
-  margin-top: 25vh; 
-  padding: 0rem;
-  
-  
-  
-  }
-  #execution_summary > div
-  {
-     margin-left: 20%;
-  }
 
-  
+#tsum-tabs label:hover {
+  color: #888;
+  cursor: pointer;
+}
 
-  
+
+
+#tsum-tabs #tab1:checked ~ #requestBodyType,
+#tsum-tabs #tab2:checked ~ #content2,
+#tsum-tabs #tab3:checked ~ #content3,
+#tsum-tabs #tab4:checked ~ #content4 {
+  display: block;
+}
+
+@media screen and (max-width: 650px) {
+  #tsum-tabs label {
+    font-size: 0;
+  }
+  #tsum-tabs label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #tsum-tabs label {
+    padding: 15px;
+  }
+}

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import APIHandler from './components/executionHandler/APIHandler';
 import RequestTabs from './components/executionHandler/RequestTabs';
 import Header from './components/LandingPage/Header'
-import TokenHandler from './components/executionHandler/TokenHandler';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import LeftNavigation from './components/fileExplorer/LeftNavigation'
 import ResponseBodyHandler from './components/executionHandler/ResponseBodyHandler'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,25 +15,23 @@ import JsonVIewEditor from './components/JsonViewer/JsonVIewEditor';
 import FileEditor from './components/viewHandler/FileEditor';
 import TaskPanelWidget from './components/PanelWidget/TaskPanelWidget'
 import BreadCrumbsNavigator from './components/BreadCrumbs/BreadCrumbsNavigator';
+import SettingsEnforce from './components/ApiSettings/SettingsEnforce';
+import RequestBodyController from './components/executionHandler/RequestBodyController';
+
+
 class BumbleBee extends React.Component {
 
 
         render() {
                 return (
 
-                        <div id="root-container">
-
-                        
-                                <Header />   
-                                
-                                <APIHandler />
-                                <TaskPanelWidget/>
-                               <JsonVIewEditor/>
-                              
+                        <div id="root-container">              
+                      
                                
-                              
-
-
+                            
+                               <APIHandler/>
+                             
+                             
 
 
                         </div>

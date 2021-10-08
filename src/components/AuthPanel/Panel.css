@@ -1,0 +1,146 @@
+#rightleft > i {
+  padding: 5px;
+}
+
+.SidePanelAuth_initial {
+  content: url('../images/AuthKeys.png');
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #888888;
+  border-radius: 20%;
+  margin-left: 30rem;
+  margin-top: 2.6rem;
+  box-shadow: 2px 4px #888888;
+  transition: 0.35s;
+  z-index: 1;
+}
+
+.SidePanelAuth_dragged {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #888888;
+  border-radius: 20%;
+  margin-left: 55.2rem;
+  margin-top: 4.6rem;
+  box-shadow: 3px 4px #888888;
+  transition: 0.35s;
+}
+
+#AuthSidePanel {
+  content: url('../images/SSH-Keys.png');
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 30rem;
+  margin-top: 4rem;
+  box-shadow: 2px 4px #888888;
+  display: none;
+}
+
+.AuthBoard_Enabled {
+  position: absolute;
+  width: 25rem;
+  height: auto;
+  margin-left: 30rem;
+  margin-top: 3rem;
+  transition: 0.35s;
+}
+
+.AuthBoard_Collapsed {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin-left: 30rem;
+  margin-top: 3rem;
+  box-shadow: 0px 0px #888888;
+  transition: 0.35s;
+  opacity: 0;
+}
+
+.AuthType {
+  position: absolute;
+  width: 25rem;
+  height: 17rem;
+  margin-left: 30rem;
+  margin-top: 3rem;
+  box-shadow: 2px 4px #888888;
+  transition: 0.35s;
+}
+
+#AuthUsageIn {
+  border: 1px solid #888888;
+  height: 6.7rem;
+  margin-top: 4px;
+}
+
+#AuthUsageIn > div {
+  display: block;
+  margin-left: 30px;
+  margin-top: -11px;
+  padding: 0;
+}
+
+input [type='radio'] {
+  margin-right: 3px;
+}
+
+#AuthUsageIn > legend {
+  float: none;
+  width: 71%;
+  margin-left: 15px;
+  margin-bottom: 0;
+  font-size: medium;
+}
+
+#req_url {
+  margin: 8px;
+}
+
+#AuthorznType {
+  position: absolute;
+  box-sizing: border-box;
+  width: 10rem;
+  height: 7%;
+  margin-top: 6%;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: right;
+  width: 55%;
+}
+
+#AuthUrl {
+  margin-top: 64px;
+  position: relative;
+  margin-left: 2px;
+  width: 100%;
+}
+
+#AuthUrl > div {
+  margin-top: 5px;
+}
+
+tr {
+  font-size: 13px;
+}
+tr > i {
+  padding: 2px;
+}
+
+.Url_InputField {
+  height: 21px;
+  font-size: 12px;
+  width: 91%;
+  align-items: center;
+}
+
+#AuthBoard > table {
+  position: relative;
+  margin-top: 13rem;
+}
