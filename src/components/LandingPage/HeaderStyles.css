@@ -1,43 +1,41 @@
-
-
-.navbar{   
-    color: #f7f7f7;
-    background-color: #364051;    
-    width: auto;
-    padding-top: 2px;
-    margin-bottom: 5px;    
+.navbar {
+  color: #f7f7f7;
+  background-color: #364051;
+  width: 100%;
+  padding-top: 2px;
+  margin-bottom: 5px;
 }
-   
- .container-flex{
-     margin-right: 2rem;
- }
- 
- .navbar-brand{
-     margin-left: 6rem;
- }
- 
- #offcanvasRightLabel{
-     color: black;
- }
-     
- #env_container{
-    display: flex;
-    float: right;
- }
 
- #ConfigCreator{
-     margin-top: 1.5rem;
-     height: 82%;
- }
+.container-flex {
+  margin-right: 2rem;
+}
 
- #header_logo_left{
-    content: url('../images/LeftArrow.svg');
- }
+.navbar-brand {
+  margin-left: 6rem;
+}
 
- #header_logo_right{
-     content: url('../images/RightArrow.svg');
- }
- 
- .navbar-brand>img{   
-    padding: 8px;    
- }
+#offcanvasRightLabel {
+  color: black;
+}
+
+#env_container {
+  display: flex;
+  float: right;
+}
+
+#ConfigCreator {
+  margin-top: 1.5rem;
+  height: 82%;
+}
+
+#header_logo_left {
+  content: url('../images/LeftArrow.svg');
+}
+
+#header_logo_right {
+  content: url('../images/RightArrow.svg');
+}
+
+.navbar-brand > img {
+  padding: 8px;
+}

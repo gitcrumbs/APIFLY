@@ -118,8 +118,6 @@ const EnvironmentInfoHandler = () => {
               </ul>
             </div>
 
-
-
             <button id="resetcanvas" type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onClick={closeCanvasHandler}></button>
           </div>
           <div className="offcanvas-body"> 

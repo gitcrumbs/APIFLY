@@ -116,9 +116,14 @@ section {
   text-align: center;
 }
 
-#Send_Request {
+.Send_Request_normal {
   content: url('../images/send.png');
   height: 18px;
+}
+
+.Send_Request_loading {
+  content: url('../images/loading.gif');
+  height: 24px;
 }
 
 #Send_Request:active {
@@ -316,4 +321,30 @@ td:hover .bi-pen-fill {
   border: 1px solid #ddd;
   border-top: 2px solid orange;
   border-bottom: 2px solid white;
+}
+
+.pinbox_initial {
+  content: url('/src/components/images/pinned_Initial.png');
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  /* border: 1px solid #888888; */
+  border-radius: 20%;
+  margin-left: 29rem;
+  margin-top: -6px;
+  /* box-shadow: 1px -1px #888888; */
+  transition: 0.35s;
+  z-index: 1;
+}
+
+.pinbox_pinned {
+  content: url('/src/components/images/pinned.png');
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 20%;
+  margin-left: 28rem;
+  margin-top: 3px;
+  transition: 0.35s;
+  z-index: 1;
 }

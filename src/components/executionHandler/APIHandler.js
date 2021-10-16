@@ -6,8 +6,10 @@ import Draggable from 'react-draggable';
 import InclusionTable from './InclusionTable';
 import FileEditor from '../viewHandler/FileEditor';
 import AuthSidePanel from '../AuthPanel/AuthSidePanel';
+import { combineReducers, createStore } from 'redux';
 
 const APIHandler = () => {
+  var sendbutton;
   const [Response, setResponse] = React.useState([{}]);
   const [scrollerpos, setsscrollerpos] = React.useState([]);
   const [StatusCode, setStatusCode] = React.useState([]);
@@ -15,6 +17,7 @@ const APIHandler = () => {
   const [statusIndicator, setstatusIndicator] = React.useState([]);
   const [RequestBody, setRequestBody] = React.useState({});
   const [requestBodyOption, setrequestBodyOption] = React.useState('');
+  const [enableDrag, setenableDrag] = React.useState(false);
 
   const SuccessStatus = {
     200: 'OK',
@@ -91,6 +94,8 @@ const APIHandler = () => {
   };
 
   const responseDict = {
+    0: '',
+    1: 'Fetching...',
     ...SuccessStatus,
     ...redirectionError,
     ...clientError,
@@ -106,65 +111,93 @@ const APIHandler = () => {
   const getRequest = () => {
     const { requestUrl, methodRequested } = RequestObject;
 
-    const result = fetch(requestUrl, {
-      method: methodRequested,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(function (response) {
-        response.headers.forEach((k, v) => console.log(k, v));
-        setstatusIndicator(getstatusIndicator(response.status));
-        setStatusCode(response.status);
-        setStatusText(response.ok);
-        return response.json();
+    if (requestUrl.length > 0 && methodRequested.length > 0) {
+      sendbutton.className = '';
+      sendbutton.className = 'Send_Request_loading';
+      setStatusCode(1);
+      const result = fetch(requestUrl, {
+        method: methodRequested,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-      .then((result) => {
-        setResponse([result]);
-      })
-      .catch((err) => {
-        console.log('Error', err);
-      });
+        .then(function (response) {
+          response.headers.forEach((k, v) => console.log(k, v));
+          setstatusIndicator(getstatusIndicator(response.status));
+          setStatusCode(response.status);
+          setStatusText(response.ok);
+          return response.json();
+        })
+        .then((result) => {
+          setResponse([result]);
+        })
+        .catch((err) => {
+          console.log('Error', err);
+        });
+    }
   };
 
   const postRequest = () => {
     const { requestUrl, methodRequested, requestBody } = RequestObject;
+
     let start_time = new Date().getTime();
-    const result = fetch(requestUrl, {
-      method: methodRequested,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: requestBody,
-    })
-      .then(function (response) {
-        setStatusCode(response.status);
-        setstatusIndicator(getstatusIndicator(response.status));
-        setStatusText(response.ok);
-        console.log(response.type);
-        console.log(response.url);
-        return response.json();
+    if (requestUrl.length > 0 && methodRequested.length > 0) {
+      const result = fetch(requestUrl, {
+        method: methodRequested,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
       })
-      .then((result) => {
-        setResponse([result]);
-      });
+        .then(function (response) {
+          setStatusCode(response.status);
+          setstatusIndicator(getstatusIndicator(response.status));
+          setStatusText(response.ok);
+          console.log(response.type);
+          console.log(response.url);
+          return response.json();
+        })
+        .then((result) => {
+          setResponse([result]);
+        })
+        .catch((err) => {
+          console.log('Error', err);
+        });
+
+      sendbutton.className = '';
+      sendbutton.className = 'Send_Request_loading';
+      setStatusCode(1);
+    } else {
+      console.log('NO Request Body Found');
+    }
   };
 
+  function checkProperties(obj) {
+    for (var key in obj) {
+      if (obj[key] !== null && obj[key] != '') return false;
+    }
+    return true;
+  }
   const validatexecutor = (e) => {
     e.preventDefault();
+    sendbutton = document.getElementById('Send_Request');
+    setstatusIndicator(getstatusIndicator(0));
     setResponse([]);
+    setStatusCode(0);
     RequestObject.requestUrl = document.getElementById('requestUrl').value;
     RequestObject.methodRequested =
       document.getElementById('Method_Selector').value;
-    RequestObject.requestBody = document.getElementById('reqcontent').value;
+    RequestObject.requestBody = RequestBody;
 
     switch (RequestObject.methodRequested) {
       case 'GET':
         getRequest();
+
         break;
 
       case 'POST':
         postRequest();
+
         break;
       default:
         break;
@@ -182,26 +215,36 @@ const APIHandler = () => {
 
   const getstatusIndicator = (payload) => {
     console.log('Inside Status Indicator check', typeof payload);
+    sendbutton.className = '';
+    sendbutton.className = 'Send_Request_normal';
     if (payload in SuccessStatus) {
       return 'dot-green';
     } else if (payload in redirectionError) {
-      return 'dot-yellow';
+      return 'dot-red';
     } else if (payload in clientError) {
       return 'dot-red';
     } else if (payload in serverError) {
       return 'dot-red';
     } else {
-      return 'NA';
+      return '';
     }
   };
 
   const validateRequestPayload = (e) => {
-    setRequestBody([e.target.value]);
+    if (e.target.value.length > 0) {
+      var obj = JSON.parse(e.target.value);
+      var pretty = JSON.stringify(obj, undefined, 4);
+      e.target.value = pretty;
+      console.log('JSON Request Payload is' + e.target.value);
+      setRequestBody([e.target.value]);
+      console.log('Type' + RequestBody);
+    } else {
+    }
   };
 
   const handleEvent = (e, data) => {
-    console.log('Event Type', e.type);
-    console.log(e, data);
+    // console.log('Event Type', e.type);
+    //console.log(e, data);
     var element = document.getElementById('executor');
   };
 
@@ -217,9 +260,46 @@ const APIHandler = () => {
     console.log(document.getElementById('requestBodyType').className);
   };
 
+  const requestParams = (e) => {
+    var reqbdy = e.target.value;
+    switch (reqbdy) {
+      case 'NONE':
+        console.log('RequestBody is set to', e.target.value);
+        break;
+      case 'KeyValuePairs':
+        console.log('RequestBody is set to', e.target.value);
+        break;
+      // setRequestBody({})
+      //Highligt the related text form area
+      case 'JSON':
+        console.log('RequestBody is set to', e.target.value);
+        break;
+      case 'KeyValuePairs':
+        console.log('RequestBody is set to', e.target.value);
+        break;
+      case 'x-www-form-urlencoded':
+        console.log('RequestBody is set to', e.target.value);
+        break;
+    }
+  };
+
+  const toggleDraggable = () => {
+    console.log('Click received on pin');
+    var pinstatus = document.getElementById('pin_box').className;
+
+    if (pinstatus == 'pinbox_initial') {
+      document.getElementById('pin_box').className = '';
+      document.getElementById('pin_box').className = 'pinbox_pinned';
+    } else if (pinstatus == 'pinbox_pinned') {
+      document.getElementById('pin_box').className = '';
+      document.getElementById('pin_box').className = 'pinbox_initial';
+    }
+    setenableDrag(!enableDrag);
+  };
   return (
     <div>
       <Draggable
+        id="draggable_box"
         onDrag={handleEvent}
         onStart={handleEvent}
         onStop={handleEvent}
@@ -227,8 +307,15 @@ const APIHandler = () => {
         onMouseUp={handleEvent}
         onTouchStart={handleEvent}
         onTouchEnd={handleEvent}
+        disabled={enableDrag}
       >
         <div id="executor">
+          <div
+            id="pin_box"
+            onClick={toggleDraggable}
+            className="pinbox_initial"
+          ></div>
+
           <AuthSidePanel />
           <section id="new-post">
             <form id="apiHandlerForm">
@@ -249,7 +336,11 @@ const APIHandler = () => {
                     placeholder="Request Endpoint"
                     type="text"
                   />
-                  <img onClick={validatexecutor} id="Send_Request"></img>
+                  <img
+                    onClick={validatexecutor}
+                    className="Send_Request_normal"
+                    id="Send_Request"
+                  ></img>
                 </div>
 
                 <div id="tsum-tabs">
@@ -261,7 +352,6 @@ const APIHandler = () => {
                       name="tabs"
                     />
                     <label htmlFor="tab1">Body</label>
-
                     <input id="tab2" type="radio" name="tabs" />
                     <label htmlFor="tab2">Headers</label>
                   </main>
@@ -276,7 +366,8 @@ const APIHandler = () => {
                     <input
                       name="requestBodyType_radio"
                       type="radio"
-                      value="None"
+                      value="NONE"
+                      onChange={requestParams}
                     />
                     <label>None</label>
                   </div>
@@ -285,7 +376,8 @@ const APIHandler = () => {
                     <input
                       name="requestBodyType_radio"
                       type="radio"
-                      value="Key Value Pairs"
+                      value="KeyValuePairs"
+                      onChange={requestParams}
                     />
                     <label>Form Data</label>
                   </div>
@@ -294,6 +386,7 @@ const APIHandler = () => {
                       name="requestBodyType_radio"
                       type="radio"
                       value="JSON"
+                      onChange={requestParams}
                     />
                     <label>JSON</label>
                   </div>
@@ -302,12 +395,13 @@ const APIHandler = () => {
                       name="requestBodyType_radio"
                       type="radio"
                       value="x-www-form-urlencoded"
+                      onChange={requestParams}
                     />
                     <label>x-www-form-urlencoded</label>
                   </div>
                 </div>
 
-                {requestBodyOption === 'Key Value Pairs' && (
+                {requestBodyOption === 'KeyValuePairs' && (
                   <div>
                     <InclusionTable />
                   </div>
@@ -324,7 +418,11 @@ const APIHandler = () => {
                       rows="5"
                       onChange={validateRequestPayload}
                       id="reqcontent"
-                    ></textarea>
+                    >
+                      {JSON.stringify(RequestBody) == '{}'
+                        ? JSON.stringify(RequestBody)
+                        : RequestBody}
+                    </textarea>
                   </div>
                 )}
 
@@ -336,14 +434,14 @@ const APIHandler = () => {
               </div>
             </form>
           </section>
-
           <section id="new-post">
             <div id="responseCode">
               <label>Response :</label>
 
               <label id="dot_color" className={statusIndicator}></label>
               <label>
-                {StatusCode}&nbsp;{responseDict[StatusCode]}
+                {StatusCode > 1 ? StatusCode : ''}&nbsp;
+                {responseDict[StatusCode]}
               </label>
             </div>
 
