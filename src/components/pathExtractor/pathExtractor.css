@@ -1,0 +1,115 @@
+.path_extractor {
+  content: url('../images/Equation.png');
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  margin-left: -2.9rem;
+  align-items: center;
+  z-index: 1;
+}
+
+.path_extractor:hover {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 20%;
+  box-shadow: -2px 3px #463535;
+  transition: 0.35s;
+  z-index: 1;
+}
+.path_extractor:active {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  box-shadow: 0px 0px #888888;
+  z-index: 1;
+}
+
+.path_Extractor_enabled {
+  position: absolute;
+  width: 34%;
+  height: auto;
+  border: 1px solid #888888;
+  /* border-radius: 20%; */
+  margin-left: 29.5rem;
+  transition: 1s;
+  z-index: 1;
+}
+
+.path_Extractor_collapsed {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin-left: 30rem;
+  margin-top: 3rem;
+  box-shadow: 0px 0px #888888;
+  transition: 1s;
+  opacity: 0;
+  display: none;
+}
+
+#exportasVariable {
+  content: url('../images/variable.png');
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 20%;
+  margin-left: 0rem;
+  z-index: 1;
+  border: 1px solid #888888;
+  margin-top: 0.3em;
+}
+
+#exportasVariable:hover {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #888888;
+  border-radius: 20%;
+  box-shadow: 2px 5px #888888;
+  transition: 0.35s;
+  z-index: 1;
+}
+
+#exportasVariable:active {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #888888;
+  border-radius: 20%;
+  box-shadow: 0px 0px #888888;
+  transition: 0.35s;
+  z-index: 1;
+}
+
+#queryInput {
+  width: 84%;
+  height: 23px;
+  display: inline;
+  overflow: hidden;
+  margin-right: 0.5em;
+  margin-left: 0.3em;
+  margin-top: 6px;
+  font-size: 11px;
+  text-align: left;
+}
+#evaluatedPath {
+  margin-left: 0.2em;
+  margin-top: 0.4em;
+  width: 97%;
+  height: 158px;
+  overflow-y: auto;
+  border: 1px solid black;
+}
+
+#jsonPathVariable {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #888888;
+  border-radius: 20%;
+  margin-left: 16.9rem;
+  z-index: 1;
+}

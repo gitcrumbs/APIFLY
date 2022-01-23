@@ -30,6 +30,7 @@
     "jquery": "^3.6.0",
     "json-loader": "^0.5.7",
     "jsoneditor": "^9.5.5",
+    "jsonpath": "^1.1.1",
     "list-react-files": "^0.2.0",
     "live-server": "^1.2.1",
     "popper.js": "^1.16.1",

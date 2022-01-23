@@ -6,11 +6,15 @@ import Draggable from 'react-draggable';
 import InclusionTable from './InclusionTable';
 import FileEditor from '../viewHandler/FileEditor';
 import AuthSidePanel from '../AuthPanel/AuthSidePanel';
+import PathIconToggle from '../pathExtractor/PathIconToggle';
+import PathExtractor from '../pathExtractor/PathExtractor';
+import ViewAPIVariables from '../pathExtractor/ViewAPIVariables';
 import { combineReducers, createStore } from 'redux';
+import CheckListItems from '../CheckList/CheckListItems';
 
-const APIHandler = () => {
+const APIHandler = (props) => {
   var sendbutton;
-  const [Response, setResponse] = React.useState([{}]);
+  const [Response, setResponse] = React.useState([]);
   const [scrollerpos, setsscrollerpos] = React.useState([]);
   const [StatusCode, setStatusCode] = React.useState([]);
   const [StatusText, setStatusText] = React.useState([false]);
@@ -286,7 +290,6 @@ const APIHandler = () => {
   const toggleDraggable = () => {
     console.log('Click received on pin');
     var pinstatus = document.getElementById('pin_box').className;
-
     if (pinstatus == 'pinbox_initial') {
       document.getElementById('pin_box').className = '';
       document.getElementById('pin_box').className = 'pinbox_pinned';
@@ -298,6 +301,7 @@ const APIHandler = () => {
   };
   return (
     <div>
+      <CheckListItems />
       <Draggable
         id="draggable_box"
         onDrag={handleEvent}
@@ -310,6 +314,7 @@ const APIHandler = () => {
         disabled={enableDrag}
       >
         <div id="executor">
+          <ViewAPIVariables />
           <div
             id="pin_box"
             onClick={toggleDraggable}
@@ -317,6 +322,7 @@ const APIHandler = () => {
           ></div>
 
           <AuthSidePanel />
+
           <section id="new-post">
             <form id="apiHandlerForm">
               <div className="form-controller">
@@ -444,6 +450,13 @@ const APIHandler = () => {
                 {responseDict[StatusCode]}
               </label>
             </div>
+
+            {Object.keys(Response).length ? <PathIconToggle /> : ''}
+            {Object.keys(Response).length ? (
+              <PathExtractor receivedResponse={Response} />
+            ) : (
+              ''
+            )}
 
             <div id="responseBody_Container" onScroll={scrollIndicator}>
               {Response.map((resp, index) => {

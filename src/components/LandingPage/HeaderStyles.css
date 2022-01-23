@@ -1,17 +1,23 @@
 .navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   color: #f7f7f7;
   background-color: #364051;
+  text-align: center;
+}
+
+.fixed-header {
   width: 100%;
-  padding-top: 2px;
-  margin-bottom: 5px;
+  position: fixed;
+  background-color: #364051;
+  padding: 10px 0;
+  color: #fff;
 }
 
 .container-flex {
   margin-right: 2rem;
-}
-
-.navbar-brand {
-  margin-left: 6rem;
 }
 
 #offcanvasRightLabel {

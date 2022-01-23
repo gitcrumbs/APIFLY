@@ -14,16 +14,18 @@ import EditHelperWidget from './components/HelperWidgets/EditHelperWidget';
 import JsonVIewEditor from './components/JsonViewer/JsonVIewEditor';
 import FileEditor from './components/viewHandler/FileEditor';
 import TaskPanelWidget from './components/PanelWidget/TaskPanelWidget';
-import BreadCrumbsNavigator from './components/BreadCrumbs/BreadCrumbsNavigator';
+
 import SettingsEnforce from './components/ApiSettings/SettingsEnforce';
 import RequestBodyController from './components/executionHandler/RequestBodyController';
-
+import Footer from './components/LandingPage/Footer';
 class BumbleBee extends React.Component {
   render() {
     return (
       <div id="root-container">
         <Header />
+        <TaskPanelWidget />
         <APIHandler />
+        <Footer />
       </div>
     );
   }

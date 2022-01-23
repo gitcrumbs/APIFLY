@@ -26,13 +26,13 @@ export default class InclusionTable extends React.Component {
                 />{' '}
               </th>
               <td>
-                Mark<i class="bi bi-pen-fill"></i>
+                Mark<i className="bi bi-pen-fill"></i>
               </td>
               <td>
-                Otto<i class="bi bi-pen-fill"></i>
+                Otto<i className="bi bi-pen-fill"></i>
               </td>
               <td>
-                My Description <i class="bi bi-pen-fill"></i>
+                My Description <i className="bi bi-pen-fill"></i>
               </td>
             </tr>
             <tr>
@@ -53,7 +53,7 @@ export default class InclusionTable extends React.Component {
             <span>
               {' '}
               Add
-              <i class="bi bi-plus-lg"></i>
+              <i className="bi bi-plus-lg"></i>
             </span>
           </tbody>
         </table>

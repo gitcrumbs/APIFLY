@@ -1,36 +1,21 @@
 import React from 'react';
 import EnvironmentInfoHandler from '../EnvironmentCanvas/EnvironmentInfoHandler';
 import '../LandingPage/HeaderStyles.css';
-
-
+import BreadCrumbsNavigator from '../BreadCrumbs/BreadCrumbsNavigator';
 const Header = () => {
-
-
-  
-  return ( 
-     
-     <header className="header navbar navbar-fixed-top navbar-inverse">
-
-      <div className="container-flex">
-        
-         <div className="container">
-            <div id="navbar">                  
-                     <div className="navbar-brand" ><img id="header_logo_left"></img> Pebble <img id="header_logo_right" ></img></div>
-                 </div>
-         </div>
-         
+  return (
+    <div class="fixed-header">
+      <div className="container">
+        <div id="navbar">
+          <div className="navbar-brand">
+            <img id="header_logo_left"></img> Pebble{' '}
+            <img id="header_logo_right"></img>
+          </div>
+          <BreadCrumbsNavigator />
+        </div>
       </div>
-      <div className="container-flex">
-         <div >Logout</div>
-         <div id="env_container"><EnvironmentInfoHandler /></div>
-      </div>
-
-
-   </header>
-
-
-)
-}
-
+    </div>
+  );
+};
 
 export default Header;
